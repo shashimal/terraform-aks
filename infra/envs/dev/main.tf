@@ -6,8 +6,14 @@ module "resource_group" {
   location = local.location
 }
 
+module "aks_ad_group" {
+  source = "../../modules/ad"
+
+  ad_name = local.aks_ad_group_name
+}
+
 module "log_analytics" {
-  source                       = "../../modules/log_analytics"
+  source = "../../modules/log_analytics"
 
   log_analytics_workspace_name = local.app_name
   location                     = local.location
